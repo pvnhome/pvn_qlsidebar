@@ -1,0 +1,46 @@
+{
+  "manifest_version": 2,
+  "name": "PVN Quick Links SideBar",
+  "description": "Displays a sidebar that lets you quickly visit stored links.",
+  "version": "1.0",
+  "applications": {
+    "gecko": {
+      "strict_min_version": "54.0a1"
+    }
+  },
+
+  "sidebar_action": {
+    "default_icon": "icons/book.png",
+    "default_title" : "Quick Links",
+    "default_panel": "sidebar/panel.html"
+  },
+
+  "browser_action": {
+    "default_icon": "icons/book.png",
+    "default_title": "Open Quick Links sidebar"
+  },
+
+  "page_action": {
+    "default_icon": "icons/add.png",
+    "default_title": "Add to Quick Links"
+  },
+
+  "background": {
+    "scripts": ["sidebar/js/background.js"]
+  },
+
+  "permissions": [
+        "bookmarks",
+        "tabs",
+        "activeTab",
+        "storage"
+  ],
+
+  "commands": {
+    "_execute_sidebar_action": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+L"
+      }
+    }
+  }
+}
