@@ -5,15 +5,12 @@ function log(message) {
 }
 
 browser.windows.getCurrent({populate: true}).then((windowInfo) => {
-   var links = [{title:'Link 1'},{title:'Link 2'},{title:'Link 3'},{title:'Link 4'},{title:'Link 5'},{title:'Link 6'}];
-
    log("Create new DataTable");
 
    table = $('#linklisttable').DataTable({
       "paging": false,
       "info": false,
       "searching": false,
-      "data": links,
       "autoWidth": false,
       "columns": [
          {
@@ -33,4 +30,19 @@ browser.windows.getCurrent({populate: true}).then((windowInfo) => {
        var data = table.row( this ).data();
        log('clicked: ' + data.title)
    } );
+
+   log("Load links");
+
+   loadRecords(save_to_read)
+   .then(links => {
+      if (links) {
+         log(links.length + " links loaded");
+         table.rows.add(links).draw();
+      } else {
+         log("No links loaded");
+      }
+   });
+
+
+
 });
