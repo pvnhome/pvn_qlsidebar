@@ -1,3 +1,5 @@
+console.log('Load background JS');
+
 browser.pageAction.onClicked.addListener(onTogglePageButton);
 browser.tabs.onUpdated.addListener(onTabUpdated);
 
